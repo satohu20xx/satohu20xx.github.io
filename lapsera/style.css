@@ -103,7 +103,8 @@ a { color: var(--primary); }
 
 .hero {
     text-align: center;
-    padding: 64px 0 16px;
+    /* 下の値は .row の上の余白と同じ。区切り線が上下の中央に来る */
+    padding: 64px 0 56px;
 }
 
 .hero img.icon {
@@ -134,6 +135,21 @@ a { color: var(--primary); }
     text-align: left;
 }
 
+.hero-demo {
+    padding: 26px 0 2px;
+}
+
+/* ここは主役ではなく、この先を読む前の一瞥なので */
+.hero-demo video {
+    display: block;
+    width: min(100%, 720px);
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 18px;
+    background: var(--surface-sunken);
+}
+
 .row {
     display: grid;
     grid-template-columns: 1fr;
@@ -142,7 +158,8 @@ a { color: var(--primary); }
     padding: 56px 0;
 }
 
-.row + .row { border-top: 1px solid var(--outline); }
+/* 先頭にも引かないと、ヒーローと本編の切れ目が出ない */
+.row { border-top: 1px solid var(--outline); }
 
 .row-media { text-align: center; }
 
