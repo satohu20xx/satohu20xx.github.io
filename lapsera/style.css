@@ -1,10 +1,20 @@
+/* 色はアプリのライトテーマ（Color.kt の brandLightColorScheme）から取った実値。
+   トーンの番号ごと合わせてあるので、アプリの配色を変えたら同じトーンを引き直す */
 :root {
-    --brand: #DD3448;
-    --brand-dark: #B02736;
-    --text: #1c1b1f;
-    --muted: #5f5b60;
-    --surface: #ffffff;
-    --bg: #f7f3f4;
+    color-scheme: light;
+
+    --primary: #B3002B;          /* primary  tone 40 */
+    --primary-hover: #89001E;    /* primary  tone 30 */
+    --primary-container: #FFD7D6;/* primary  tone 90 */
+    --on-primary-container: #3E0006; /* primary tone 10 */
+    --selection: #D42A41;        /* selectionFill（ライト） */
+
+    --bg: #F9F9F9;               /* neutral  tone 98 */
+    --surface: #FFFFFF;          /* neutral  tone 100 */
+    --surface-sunken: #EEEEEE;   /* neutral  tone 94 */
+    --text: #1B1B1B;             /* neutral  tone 10 */
+    --muted: #474747;            /* neutral  tone 30 */
+    --outline: #C6C6C6;          /* neutral  tone 80 */
 }
 
 * {
@@ -13,175 +23,232 @@
     box-sizing: border-box;
 }
 
+html { -webkit-text-size-adjust: 100%; }
+
 body {
     font-family: 'Hiragino Sans', 'Noto Sans JP', 'Segoe UI', system-ui, sans-serif;
     line-height: 1.8;
     color: var(--text);
     background: var(--bg);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-a { color: var(--brand); }
+img { max-width: 100%; }
+
+a { color: var(--primary); }
+
+/* 既定を読み物の幅にしてあるのは、プライバシーポリシーの HTML を触らずに済ませるため */
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 72px;
+}
+
+.container.wide { max-width: 1000px; }
 
 .lang-switch {
     display: flex;
     justify-content: center;
     gap: 8px;
-    padding: 16px;
+    padding: 20px 16px 4px;
 }
 
 .lang-switch a,
 .lang-switch span {
-    border: 1px solid #d8d0d2;
-    padding: 6px 18px;
+    border: 1px solid var(--outline);
+    padding: 5px 18px;
     border-radius: 999px;
     font-size: 0.85rem;
     text-decoration: none;
     color: var(--muted);
+    background: var(--surface);
 }
 
 .lang-switch .current {
-    background: var(--brand);
-    border-color: var(--brand);
+    background: var(--text);
+    border-color: var(--text);
     color: #fff;
 }
 
-.container {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
-.content {
+.btn:hover { background: var(--primary-hover); }
+
+.btn.secondary {
     background: var(--surface);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    color: var(--text);
+    border: 1px solid var(--outline);
+    font-weight: 600;
 }
 
-p { margin-bottom: 14px; }
-
-ul { margin: 0 0 14px 24px; }
-
-li { margin-bottom: 6px; }
-
-.hero {
-    text-align: center;
-    padding: 40px 0 56px;
-}
-
-.hero img {
-    width: 112px;
-    height: 112px;
-    border-radius: 26%;
-    box-shadow: 0 8px 24px rgba(221, 52, 72, 0.28);
-}
-
-.hero h1 {
-    font-size: 2.6rem;
-    letter-spacing: 0.02em;
-    margin-top: 24px;
-}
-
-.subtitle {
-    font-size: 1.15rem;
-    color: var(--muted);
-    margin-top: 8px;
-}
-
-.content h2 {
-    font-size: 1.3rem;
-    color: var(--brand);
-    margin-bottom: 16px;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin: 32px 0;
-}
-
-.feature {
-    padding: 20px;
-    background: var(--bg);
-    border-radius: 12px;
-    border-left: 4px solid var(--brand);
-}
-
-.feature h3 {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
-}
-
-.feature p {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 0;
-}
+.btn.secondary:hover { background: var(--surface-sunken); }
 
 .links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    margin-top: 32px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 13px 28px;
-    background: var(--brand);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 999px;
-    font-weight: 600;
+.hero {
+    text-align: center;
+    padding: 64px 0 16px;
 }
 
-.btn:hover { background: var(--brand-dark); }
-
-.btn.secondary {
-    background: transparent;
-    color: var(--brand);
-    border: 1px solid var(--brand);
+.hero img.icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 24%;
+    box-shadow: 0 10px 30px rgba(179, 0, 43, 0.22);
 }
 
-.btn.secondary:hover {
-    background: var(--brand);
-    color: #fff;
+.hero h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 20px;
+}
+
+.hero .tagline {
+    font-size: clamp(1.9rem, 6.4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 6px;
+}
+
+.hero .lead {
+    color: var(--muted);
+    margin: 20px auto 30px;
+    max-width: 32em;
+    text-align: left;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 56px 0;
+}
+
+.row + .row { border-top: 1px solid var(--outline); }
+
+.row-media { text-align: center; }
+
+/* 画像は通知アイコンが並ぶステータスバーを落としてあるので、縦は 2424 ではなく 2288。
+   落とす量はストア画像と同じ 136px（store-assets/common.py の STATUS_BAR） */
+.row-media img {
+    width: 175px;
+    /* 明示しないと、img の height 属性が作る寸法が aspect-ratio より優先される */
+    height: auto;
+    aspect-ratio: 1080 / 2288;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid var(--outline);
+    background: var(--surface-sunken);
+    box-shadow: 0 16px 40px rgba(27, 27, 27, 0.10);
+}
+
+.kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* 1 行が長いと目が戻る位置を見失う。和文で 35〜40 字に収まる幅で止める */
+.row-text { max-width: 600px; }
+
+.row-text h2 {
+    font-size: clamp(1.3rem, 4.4vw, 1.7rem);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.row-text p { color: var(--muted); }
+
+@media (min-width: 820px) {
+    .row {
+        grid-template-columns: 200px 1fr;
+        gap: 88px;
+        /* 絵だけが枠の端に貼り付いて見えるため */
+        padding: 56px 40px;
+    }
+
+    /* 列の幅も入れ替えないと、絵が本文側の広い列に入って間延びする */
+    .row:nth-of-type(even) { grid-template-columns: 1fr 200px; }
+
+    .row:nth-of-type(even) .row-media { order: 2; }
+
+    .row-media img { width: 200px; }
 }
 
 footer {
     text-align: center;
-    padding: 32px 0 0;
+    padding: 56px 0 0;
     color: var(--muted);
     font-size: 0.9rem;
+    border-top: 1px solid var(--outline);
 }
 
 footer a { color: var(--muted); }
 
+footer .links { margin-bottom: 16px; }
+
+footer .lang-switch { padding: 0 0 20px; }
+
 .policy-header {
-    background: var(--brand);
-    color: #fff;
-    padding: 40px 24px;
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    padding: 36px 24px;
     text-align: center;
-    border-radius: 16px;
-    margin-bottom: 24px;
+    border-radius: 24px;
+    margin-bottom: 20px;
 }
 
-.policy-header h1 { font-size: 2.1rem; }
+.policy-header h1 {
+    font-size: clamp(1.6rem, 6vw, 2.1rem);
+    line-height: 1.35;
+}
 
 .app-name {
-    opacity: 0.9;
-    font-size: 1rem;
-    margin-top: 4px;
+    font-size: 0.95rem;
+    margin-top: 6px;
     margin-bottom: 0;
+    opacity: 0.85;
 }
 
+.content {
+    background: var(--surface);
+    border: 1px solid var(--outline);
+    padding: clamp(24px, 5vw, 44px);
+    border-radius: 24px;
+}
+
+.content p { margin-bottom: 14px; }
+
+.content ul { margin: 0 0 14px 22px; }
+
+.content li { margin-bottom: 6px; }
+
 .content h2.section {
-    font-size: 1.2rem;
-    margin: 34px 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #f0e2e4;
+    font-size: 1.15rem;
+    margin: 36px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--selection);
+    line-height: 1.5;
 }
 
 .content h2.section:first-child { margin-top: 0; }
@@ -200,11 +267,13 @@ footer a { color: var(--muted); }
 .back-link {
     display: inline-block;
     margin-top: 32px;
-    padding: 11px 24px;
-    background: var(--brand);
-    color: #fff;
+    padding: 12px 26px;
+    background: var(--surface);
+    border: 1px solid var(--outline);
+    color: var(--text);
     text-decoration: none;
     border-radius: 999px;
+    font-weight: 600;
 }
 
-.back-link:hover { background: var(--brand-dark); }
+.back-link:hover { background: var(--surface-sunken); }
