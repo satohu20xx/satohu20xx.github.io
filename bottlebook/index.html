@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ボトルブック</title>
+    <meta name="description" content="誰かのおすすめの本が、ボトルに入って不定期に浜辺へ流れ着くアプリ。準備中です。">
+    <meta name="author" content="satohu20xx">
+    <link rel="canonical" href="https://satohu20xx.github.io/bottlebook/">
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+            color: #1f3b4d;
+            background: #ebd9a8;
+        }
+        .sky {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 16px 24px;
+            text-align: center;
+            background: linear-gradient(#7ec8e3, #b8e4f0);
+        }
+        h1 {
+            margin: 0 0 12px;
+            font-size: 2.25rem;
+            letter-spacing: 0.08em;
+        }
+        .tagline {
+            margin: 0 0 24px;
+            line-height: 1.8;
+        }
+        .status {
+            margin: 0;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(250, 253, 255, 0.7);
+            font-size: 0.875rem;
+        }
+        .sea {
+            flex: 1;
+            background: linear-gradient(#1f5f8b, #2a7fa8 60%, #3fa5c0);
+        }
+        .shore {
+            height: 12px;
+            background: #7ccfd6;
+        }
+        .sand {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <main class="sky">
+        <h1>ボトルブック</h1>
+        <p class="tagline">誰かのおすすめの本が、<br>ボトルに入って浜辺へ流れ着く。</p>
+        <p class="status">準備中</p>
+    </main>
+    <div class="sea"></div>
+    <div class="shore"></div>
+    <div class="sand"></div>
+</body>
+</html>
