@@ -1,0 +1,304 @@
+/* 組み方は /lapsera/style.css と同じ。色だけ SwipeCard のライトテーマ（ui/theme/Color.kt）に合わせてある */
+:root {
+    color-scheme: light;
+
+    /* Primary #5B7BB4 は白い文字を載せると読みにくいので、ボタンとリンクには同じ色相を暗くした値を使う */
+    --primary: #46659E;
+    --primary-hover: #36528A;
+    --primary-container: #D6E3F8;    /* PrimaryContainer */
+    --on-primary-container: #1A2F5A; /* OnPrimaryContainer */
+    --selection: #E97777;            /* Tertiary */
+
+    --bg: #F7F9FC;
+    --surface: #FFFFFF;
+    --surface-sunken: #EEF1F6;
+    --text: #1C1B1F;                 /* OnSurface */
+    --muted: #4A4F5A;
+    --outline: #CAD0DB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+img { max-width: 100%; }
+
+a { color: var(--primary); }
+
+/* 既定を読み物の幅にしてあるのは、プライバシーポリシーと共用するため */
+.container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 72px;
+}
+
+.container.wide { max-width: 1000px; }
+
+.lang-switch {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 16px 4px;
+}
+
+.lang-switch a,
+.lang-switch span {
+    border: 1px solid var(--outline);
+    padding: 5px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--muted);
+    background: var(--surface);
+}
+
+.lang-switch .current {
+    background: var(--text);
+    border-color: var(--text);
+    color: #fff;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.btn:hover { background: var(--primary-hover); }
+
+.btn.secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--outline);
+    font-weight: 600;
+}
+
+.btn.secondary:hover { background: var(--surface-sunken); }
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero {
+    text-align: center;
+    /* 下の値は .row の上の余白と同じ。区切り線が上下の中央に来る */
+    padding: 64px 0 56px;
+}
+
+.hero img.icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 24%;
+    box-shadow: 0 10px 30px rgba(70, 101, 158, 0.28);
+}
+
+.hero h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 20px;
+}
+
+.hero .tagline {
+    font-size: clamp(1.9rem, 6.4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 6px;
+}
+
+.hero .tagline .accent { color: var(--selection); }
+
+.hero .lead {
+    color: var(--muted);
+    margin: 20px auto 30px;
+    max-width: 32em;
+    text-align: left;
+}
+
+/* lapsera ではデモ動画を置いている場所。動画が無いので、スワイプしている途中の画面で代える */
+.hero-shot {
+    padding: 30px 0 6px;
+}
+
+.hero-shot img {
+    display: block;
+    width: 230px;
+    height: auto;
+    margin: 0 auto;
+    aspect-ratio: 1080 / 2282;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 1px solid var(--outline);
+    background: var(--surface-sunken);
+    box-shadow: 0 20px 50px rgba(26, 47, 90, 0.16);
+    transform: rotate(-2deg);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 56px 0;
+}
+
+/* 先頭にも引かないと、ヒーローと本編の切れ目が出ない */
+.row { border-top: 1px solid var(--outline); }
+
+.row-media { text-align: center; }
+
+/* 画像は通知アイコンが並ぶステータスバーを落としてあるので、縦は 2424 ではなく 2282。
+   落とす量はストア画像と同じ 142px（SwipeCard の store-assets/common.py の STATUS_BAR） */
+.row-media img {
+    width: 175px;
+    /* 明示しないと、img の height 属性が作る寸法が aspect-ratio より優先される */
+    height: auto;
+    aspect-ratio: 1080 / 2282;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid var(--outline);
+    background: var(--surface-sunken);
+    box-shadow: 0 16px 40px rgba(26, 47, 90, 0.10);
+}
+
+.kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* 1 行が長いと目が戻る位置を見失う。和文で 35〜40 字に収まる幅で止める */
+.row-text { max-width: 600px; }
+
+.row-text h2 {
+    font-size: clamp(1.3rem, 4.4vw, 1.7rem);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.row-text p { color: var(--muted); }
+
+.row-text p + p { margin-top: 10px; }
+
+@media (min-width: 820px) {
+    .row {
+        grid-template-columns: 200px 1fr;
+        gap: 88px;
+        /* 絵だけが枠の端に貼り付いて見えるため */
+        padding: 56px 40px;
+    }
+
+    /* 列の幅も入れ替えないと、絵が本文側の広い列に入って間延びする */
+    .row:nth-of-type(even) { grid-template-columns: 1fr 200px; }
+
+    .row:nth-of-type(even) .row-media { order: 2; }
+
+    .row-media img { width: 200px; }
+}
+
+footer {
+    text-align: center;
+    padding: 56px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--outline);
+}
+
+footer a { color: var(--muted); }
+
+footer .links { margin-bottom: 16px; }
+
+footer .lang-switch { padding: 0 0 20px; }
+
+.policy-header {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    padding: 36px 24px;
+    text-align: center;
+    border-radius: 24px;
+    margin-bottom: 20px;
+}
+
+.policy-header h1 {
+    font-size: clamp(1.6rem, 6vw, 2.1rem);
+    line-height: 1.35;
+}
+
+.app-name {
+    font-size: 0.95rem;
+    margin-top: 6px;
+    margin-bottom: 0;
+    opacity: 0.85;
+}
+
+.content {
+    background: var(--surface);
+    border: 1px solid var(--outline);
+    padding: clamp(24px, 5vw, 44px);
+    border-radius: 24px;
+}
+
+.content p { margin-bottom: 14px; }
+
+.content ul { margin: 0 0 14px 22px; }
+
+.content li { margin-bottom: 6px; }
+
+.content h2.section {
+    font-size: 1.15rem;
+    margin: 36px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--selection);
+    line-height: 1.5;
+}
+
+.content h2.section:first-child { margin-top: 0; }
+
+.date {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.signature {
+    margin-top: 28px;
+    color: var(--muted);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 12px 26px;
+    background: var(--surface);
+    border: 1px solid var(--outline);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.back-link:hover { background: var(--surface-sunken); }
